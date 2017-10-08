@@ -23,6 +23,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 import blanco.apex.formatter.cli.BlancoApexFormatterCli;
 import blanco.apex.formatter.cli.BlancoApexFormatterCliSettings;
@@ -35,8 +36,8 @@ public class BlancoApexFormatterPlugin extends AbstractMojo {
     @Parameter(property = "format.input", defaultValue = "${project.basedir}")
     private File input;
 
-    @Parameter(property = "format.output", defaultValue = "${project.basedir}")
-    private File output;
+    @Parameter(property = "format.output")
+    private File output = null;
 
     @Parameter(property = "format.verbose", defaultValue = "false")
     private boolean verbose = false;
@@ -67,9 +68,15 @@ public class BlancoApexFormatterPlugin extends AbstractMojo {
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
-            System.err.println("blanco-apex-formatter-plugin: format: basedir: " + input.getAbsolutePath());
-
             BlancoApexFormatterCli.showVersion();
+
+            if (output == null) {
+                final MavenProject mavenProject = (MavenProject) getPluginContext().get("project");
+                output = new File(mavenProject.getBuild().getDirectory() + "/apex");
+            }
+
+            System.err.println("    input: " + input.getAbsolutePath());
+            System.err.println("    output: " + output.getCanonicalPath());
 
             settings.setInput(input.getCanonicalPath());
             settings.setOutput(output.getCanonicalPath());
