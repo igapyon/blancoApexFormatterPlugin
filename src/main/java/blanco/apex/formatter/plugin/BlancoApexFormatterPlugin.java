@@ -27,6 +27,9 @@ import org.apache.maven.plugins.annotations.Parameter;
 import blanco.apex.formatter.cli.BlancoApexFormatterCli;
 import blanco.apex.formatter.cli.BlancoApexFormatterCliSettings;
 
+/**
+ *
+ */
 @Mojo(name = "format")
 public class BlancoApexFormatterPlugin extends AbstractMojo {
     @Parameter(property = "format.input", defaultValue = "${project.basedir}")
