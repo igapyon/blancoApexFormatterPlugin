@@ -72,7 +72,7 @@ public class BlancoApexFormatterPlugin extends AbstractMojo {
 
             if (output == null) {
                 final MavenProject mavenProject = (MavenProject) getPluginContext().get("project");
-                output = new File(mavenProject.getBuild().getDirectory() + "/apex");
+                output = new File(mavenProject.getBuild().getDirectory() + "/apex-formatted");
             }
 
             System.err.println("    input: " + input.getAbsolutePath());
