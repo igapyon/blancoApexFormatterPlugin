@@ -29,7 +29,11 @@ import blanco.apex.formatter.cli.BlancoApexFormatterCli;
 import blanco.apex.formatter.cli.BlancoApexFormatterCliSettings;
 
 /**
- *
+ * Apex formatter maven plugin.
+ * 
+ * <code>
+ * mvn jp.igapyon.blanco.apex.formatter.plugin:blancoApexFormatterPlugin:1.0.0-SNAPSHOT:format
+ * </code>
  */
 @Mojo(name = "format")
 public class BlancoApexFormatterPlugin extends AbstractMojo {
