@@ -43,7 +43,7 @@ public without sharing class MySimpleTest {
                 <configuration>
                     <input>${project.basedir}/src/main/apex</input>
                     <output>${project.build.directory}/apex-formatted</output>
-                    <verbose>true</verbose>
+                    <verbose>false</verbose>
                     <isSmashWhitespace>false</isSmashWhitespace>
                     <isFormatComma>true</isFormatComma>
                     <isFormatSemicolon>true</isFormatSemicolon>
