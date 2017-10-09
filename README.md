@@ -39,7 +39,7 @@ public without sharing class MySimpleTest {
             <plugin>
                 <groupId>jp.igapyon.blanco.apex.formatter.plugin</groupId>
                 <artifactId>blancoApexFormatterPlugin</artifactId>
-                <version>1.0.3-SNAPSHOT</version>
+                <version>1.0.3</version>
                 <configuration>
                     <input>${project.basedir}/src/main/apex</input>
                     <output>${project.build.directory}/apex-formatted</output>
@@ -64,5 +64,5 @@ public without sharing class MySimpleTest {
 ### run on maven
 
 ```sh
-mvn jp.igapyon.blanco.apex.formatter.plugin:blancoApexFormatterPlugin:1.0.2:format
+mvn jp.igapyon.blanco.apex.formatter.plugin:blancoApexFormatterPlugin:1.0.3:format
 ```
