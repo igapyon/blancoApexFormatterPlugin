@@ -31,8 +31,12 @@ import blanco.apex.formatter.cli.BlancoApexFormatterCliSettings;
 /**
  * Apex formatter maven plugin.
  * 
+ * <p>
+ * usage:
+ * </p>
+ * 
  * <code>
- * mvn jp.igapyon.blanco.apex.formatter.plugin:blancoApexFormatterPlugin:1.0.0-SNAPSHOT:format
+ * mvn jp.igapyon.blanco.apex.formatter.plugin:blancoApexFormatterPlugin:1.0.2:format
  * </code>
  */
 @Mojo(name = "format")

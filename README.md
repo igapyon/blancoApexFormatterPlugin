@@ -1,6 +1,6 @@
 # blancoApexFormatter
 
-blancoApexFormatter is a Apax language source code formatter.
+blancoApexFormatter is an Apax language source code formatter.
 blancoApexFormatter is written in Java. blancoApexFormatter is provided as an OSS product.
 
 ## spec
