@@ -39,10 +39,17 @@ public without sharing class MySimpleTest {
             <plugin>
                 <groupId>jp.igapyon.blanco.apex.formatter.plugin</groupId>
                 <artifactId>blancoApexFormatterPlugin</artifactId>
-                <version>1.0.2</version>
+                <version>1.0.3-SNAPSHOT</version>
                 <configuration>
+                    <input>${project.basedir}/src/main/apex</input>
+                    <output>${project.build.directory}/apex-formatted</output>
                     <verbose>true</verbose>
-                    <isSmashWhitespace>true</isSmashWhitespace>
+                    <isSmashWhitespace>false</isSmashWhitespace>
+                    <isFormatComma>true</isFormatComma>
+                    <isFormatSemicolon>true</isFormatSemicolon>
+                    <isFormatIndent>true</isFormatIndent>
+                    <isFormatSpecialChar>true</isFormatSpecialChar>
+                    <isFormatBracket>true</isFormatBracket>
                 </configuration>
                 <executions>
                     <execution>
