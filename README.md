@@ -39,7 +39,7 @@ public without sharing class MySimpleTest {
             <plugin>
                 <groupId>jp.igapyon.blanco.apex.formatter.plugin</groupId>
                 <artifactId>blancoApexFormatterPlugin</artifactId>
-                <version>1.0.1</version>
+                <version>1.0.2</version>
                 <configuration>
                     <verbose>true</verbose>
                     <isSmashWhitespace>true</isSmashWhitespace>
@@ -57,5 +57,5 @@ public without sharing class MySimpleTest {
 ### run on maven
 
 ```sh
-mvn jp.igapyon.blanco.apex.formatter.plugin:blancoApexFormatterPlugin:1.0.1:format
+mvn jp.igapyon.blanco.apex.formatter.plugin:blancoApexFormatterPlugin:1.0.2:format
 ```
