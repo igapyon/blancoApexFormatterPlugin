@@ -57,5 +57,5 @@ public without sharing class MySimpleTest {
 ### run on maven
 
 ```sh
-mvn jp.igapyon.blanco.apex.formatter.plugin:blancoApexFormatterPlugin:1.0.0-SNAPSHOT:format
+mvn jp.igapyon.blanco.apex.formatter.plugin:blancoApexFormatterPlugin:1.0.1:format
 ```
