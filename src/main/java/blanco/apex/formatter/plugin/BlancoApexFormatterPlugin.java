@@ -23,7 +23,6 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.project.MavenProject;
 
 import blanco.apex.formatter.cli.BlancoApexFormatterCli;
 import blanco.apex.formatter.cli.BlancoApexFormatterCliSettings;
@@ -41,10 +40,10 @@ import blanco.apex.formatter.cli.BlancoApexFormatterCliSettings;
  */
 @Mojo(name = "format")
 public class BlancoApexFormatterPlugin extends AbstractMojo {
-    @Parameter(property = "format.input")
+    @Parameter(property = "format.input", defaultValue = "${project.basedir}/src/main/apex")
     private File input;
 
-    @Parameter(property = "format.output")
+    @Parameter(property = "format.output", defaultValue = "${project.build.directory}/apex-formatted")
     private File output = null;
 
     @Parameter(property = "format.verbose", defaultValue = "false")
@@ -78,20 +77,11 @@ public class BlancoApexFormatterPlugin extends AbstractMojo {
         try {
             BlancoApexFormatterCli.showVersion();
 
-            if (input == null) {
-                final MavenProject mavenProject = (MavenProject) getPluginContext().get("project");
-                input = new File(mavenProject.getBasedir() + "/src/main/apex");
-                if (input.exists() == false) {
-                    System.err.println("      create input dir: " + input.getAbsolutePath());
-                    if (input.mkdirs() == false) {
-                        System.err.println("      fail to create input dir: " + input.getAbsolutePath());
-                    }
+            if (input.exists() == false) {
+                System.err.println("      create input dir: " + input.getAbsolutePath());
+                if (input.mkdirs() == false) {
+                    System.err.println("      fail to create input dir: " + input.getAbsolutePath());
                 }
-            }
-
-            if (output == null) {
-                final MavenProject mavenProject = (MavenProject) getPluginContext().get("project");
-                output = new File(mavenProject.getBuild().getDirectory() + "/apex-formatted");
             }
 
             System.err.println("      input: " + input.getAbsolutePath());
