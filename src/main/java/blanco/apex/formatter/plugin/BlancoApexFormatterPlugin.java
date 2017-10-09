@@ -41,7 +41,7 @@ import blanco.apex.formatter.cli.BlancoApexFormatterCliSettings;
  */
 @Mojo(name = "format")
 public class BlancoApexFormatterPlugin extends AbstractMojo {
-    @Parameter(property = "format.input", defaultValue = "${project.basedir}")
+    @Parameter(property = "format.input")
     private File input;
 
     @Parameter(property = "format.output")
@@ -78,6 +78,17 @@ public class BlancoApexFormatterPlugin extends AbstractMojo {
         try {
             BlancoApexFormatterCli.showVersion();
 
+            if (input == null) {
+                final MavenProject mavenProject = (MavenProject) getPluginContext().get("project");
+                input = new File(mavenProject.getBasedir() + "/src/main/apex");
+                if (input.exists() == false) {
+                    System.err.println("      create input dir: " + input.getAbsolutePath());
+                    if (input.mkdirs() == false) {
+                        System.err.println("      fail to create input dir: " + input.getAbsolutePath());
+                    }
+                }
+            }
+
             if (output == null) {
                 final MavenProject mavenProject = (MavenProject) getPluginContext().get("project");
                 output = new File(mavenProject.getBuild().getDirectory() + "/apex-formatted");
@@ -91,15 +102,10 @@ public class BlancoApexFormatterPlugin extends AbstractMojo {
             settings.setVerbose(verbose);
 
             settings.getFormatterSettings().setSmashWhitespace(isSmashWhitespace);
-
             settings.getFormatterSettings().setFormatComma(isFormatComma);
-
             settings.getFormatterSettings().setFormatSemicolon(isFormatSemicolon);
-
             settings.getFormatterSettings().setFormatIndent(isFormatIndent);
-
             settings.getFormatterSettings().setFormatSpecialChar(isFormatSpecialChar);
-
             settings.getFormatterSettings().setFormatBracket(isFormatBracket);
 
             if (BlancoApexFormatterCli.validate(settings) == false) {
